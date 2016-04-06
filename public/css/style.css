@@ -2,6 +2,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* Menu customization */
+
 #custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(119, 119, 119, 1);
 }
@@ -40,3 +42,35 @@ body {
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #81d0d8;
 }
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar-brand{
+    font-family: cursive;
+}
+
+/* End Menu customization */
+
+/* Recent Section */
+#recent-section {
+    
+}
+
+h3 {
+    color: #81D0D8;
+    font-family: cursive;
+}
+/* End Recent Section */
+
+/* Footer section */
+footer {
+    padding: 1px 0;
+    background: rgb(255, 255, 255);
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/*End Footer section*/
