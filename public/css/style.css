@@ -1,5 +1,17 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1.5em "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+.max-height {
+    height: 100%;
+}
+
+.bg-fill-color {
+    background-color: rgba(129, 208, 216, 0.06);
 }
 
 /* Menu customization */
@@ -8,7 +20,6 @@ body {
     color: rgba(119, 119, 119, 1);
 }
 #custom-bootstrap-menu.navbar-default {
-    font-size: 14px;
     background-color: rgba(129, 208, 216, 1);
     border-width: 1px;
     border-radius: 4px;
@@ -54,9 +65,6 @@ body {
 /* End Menu customization */
 
 /* Recent Section */
-#recent-section {
-    
-}
 
 h3 {
     color: #81D0D8;
@@ -67,7 +75,6 @@ h3 {
 /* Footer section */
 footer {
     padding: 1px 0;
-    background: rgb(255, 255, 255);
     height: 20px;
     position: fixed;
     bottom: 0;
