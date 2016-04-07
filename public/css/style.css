@@ -62,6 +62,48 @@ html, body {
     font-family: cursive;
 }
 
+#login-dropdown-list a {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    margin-top: -1px !important;
+    right: -15px !important;
+    border-radius: 0px !important;
+    background-color: #81D0D8;
+    border: 0px;
+}
+
+#login-dropdown-list .dropdown-menu {
+    min-width: 300px;
+    padding: 15px;
+}
+
+#login-dropdown-list .btn {
+    margin-top: 5px;
+    background-color: #81D0D8;
+    color: #fff;
+    border-color: #F8FDFD;
+}
+
+#login-dropdown-list input:last-of-type {
+    margin-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#login-dropdown-list input {
+    margin-top: 10px;
+    border-radius: 0px;
+    position: relative;
+    z-index: 1;
+}
+
+#login-dropdown-list .dropdown-menu .or {
+    margin: 5px 0;
+    text-align: center;
+}
+
 /* End Menu customization */
 
 /* Recent Section */

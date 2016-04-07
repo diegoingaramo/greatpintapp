@@ -9,7 +9,26 @@
                 <li><a ng-link="recent">Recent</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="!isAuthed()">
-                <li><a ng-link="signup"><span class="glyphicon glyphicon-user"></span> Sign in / Join</a></li>
+                <li id="login-dropdown-list" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> Sign in / Join  </a> 
+                    <div class="dropdown-menu">
+                    <button class="login-button btn btn-block btn-Twitter">Sign in with Twitter</button>
+                    <div class="or">
+                        <!--<span class="hline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="or-text">or</span>
+                        <span class="hline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+                        <hr/>
+                    </div>
+
+                    <input id="login-username" type="text" placeholder="Username" class="form-control">
+                    <input id="login-password" type="password" placeholder="Password" class="form-control">
+                    <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Sign in </button>
+                    <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Create account </button>
+                    <!--<div id="login-other-options">
+                            <a id="signup-link" class="pull-right">Create account</a>
+                    </div>-->
+                    </div>
+	             </li>
             </ul>    
         </div>
     </div>
