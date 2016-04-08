@@ -72,6 +72,7 @@ html, body {
     border-radius: 0px !important;
     background-color: #81D0D8;
     border: 0px;
+    display: none;
 }
 
 #login-dropdown-list .dropdown-menu {
@@ -102,6 +103,27 @@ html, body {
 #login-dropdown-list .dropdown-menu .or {
     margin: 5px 0;
     text-align: center;
+}
+
+.alert-info, .alert-danger, .alert-warning, .alert-success {
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 0px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #f44336;
+    background-color: #A7DEE3;
+    border-color: #ebccd1;
+}
+
+.keepOpen {
+    display: block;
 }
 
 /* End Menu customization */
