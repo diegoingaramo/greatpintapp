@@ -8,6 +8,11 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a ng-link="recent">Recent</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="isAuthed()">
+                <li><a ng-link="recent"> My Pins </a></li>
+                <li><a ng-link="recent"> Add </a></li>
+                <li><a href="#" ng-click="logout()"> {{getUser().username}} Logout <span class="glyphicon glyphicon-log-in" title="logout"></span></a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="!isAuthed()">
                 <li id="login-dropdown-list" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" ng-click="toggleSignin()"> <span class="glyphicon glyphicon-user"></span> Sign in / Join  </a> 
@@ -16,23 +21,23 @@
                         <div class="or">
                             <hr/>
                         </div>
-                        <div class="alert alert-danger text-center" ng-show="notFoundUser">User not found</div>
-                        <input id="login-username" type="text" placeholder="Username" class="form-control">
-                        <input id="login-password" type="password" placeholder="Password" class="form-control">
-                        <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Sign in </button>
-                        <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button" ng-click="showSignin=2"> Create account </button>
+                        <div class="alert alert-danger text-center" ng-show="notFoundUser">{{errorMessage}}</div>
+                        <input type="text" placeholder="Username" class="form-control" ng-model="user.username">
+                        <input type="password" placeholder="Password" class="form-control" ng-model="user.password">
+                        <button class="btn btn-primary col-xs-12 col-sm-12" type="button" ng-click="login()"> Sign in </button>
+                        <button class="btn btn-primary col-xs-12 col-sm-12" type="button" ng-click="showSignin=2"> Create account </button>
                     </div>
                     <div class="dropdown-menu" ng-show="showSignin==2" ng-class="{keepOpen: showSignin==2}">
                         <span class="btn btn-block btn-Twitter">New Account</span>
                         <div class="or">
                             <hr/>
                         </div>
-                        <div class="alert alert-danger text-center" ng-show="userAlreadyExist">User not found</div>
-                        <input id="login-username" type="text" placeholder="Username" class="form-control">
-                        <input id="login-password" type="password" placeholder="Password" class="form-control">
-                        <input id="login-password" type="password" placeholder="Password Again" class="form-control">
-                        <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Create </button>
-                        <button class="btn btn-primary col-xs-12 col-sm-12" id="login-buttons-password" type="button" ng-click="showSignin=1"> Cancel </button>
+                        <div class="alert alert-danger text-center" ng-show="userAlreadyExist">{{errorMessage}}</div>
+                        <input type="text" placeholder="Username" class="form-control" ng-model="user.newUsername">
+                        <input type="password" placeholder="Password" class="form-control" ng-model="user.newPassword">
+                        <input type="password" placeholder="Password Again" class="form-control" ng-model="user.newRPassword">
+                        <button class="btn btn-primary col-xs-12 col-sm-12" type="button" ng-click="signup()"> Create </button>
+                        <button class="btn btn-primary col-xs-12 col-sm-12" type="button" ng-click="showSignin=1"> Cancel </button>
                     </div>
 	             </li>
             </ul>    
