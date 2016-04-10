@@ -29,6 +29,17 @@ app.directive('customnavbar', function() {
             });
         };
         
+        
+        $scope.tLogin = function() {
+            user.tLogin().then(function(result) {
+               if (result.data.success){
+                   $location.path('/');
+               }
+            }, function(reason) {
+                 bootbox.alert("Error: " + reason);
+            });
+        };
+        
         $scope.signup = function() {
            $scope.userAlreadyExist = false;
            $scope.errorMessage = "";

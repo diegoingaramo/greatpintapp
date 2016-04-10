@@ -60,6 +60,10 @@ var userService = function($http, auth, $window) {
     
   var self = this;
     
+  self.init = function(){
+      OAuth.initialize('CwgeJO-j28bHeThunMwNKDYi6C4');
+  };
+    
   self.signup = function(username, password, rpassword) {
   return $http.post('users/signup', {
       username: username,
@@ -85,6 +89,24 @@ var userService = function($http, auth, $window) {
       });
   };
     
+  self.tLogin = function() {
+    return new Promise(function(resolve, reject){
+        if (!auth.isAuthed()){
+          OAuth.popup('twitter').done(function(result) {
+            result.me().done(function(data) {
+                $window.localStorage.setItem('user',JSON.stringify({alias: data.alias}));
+                resolve();
+            });
+          }).fail(function (error) {
+                console.error('error: ', error);
+                reject();
+          });
+        }else {
+            resolve();
+        }
+      });
+  };
+    
     
   self.currentUser = function() {
     if ($window.localStorage.getItem('user'))
@@ -107,6 +129,10 @@ AppController.$routeConfig = [
 
 function AppController($scope, $router, user, auth, $location) {
     
+  $scope.init = function() {
+      user.init();
+  }
+    
   $scope.isAuthed = function() {
     return auth.isAuthed ? auth.isAuthed() : false
   };
@@ -114,6 +140,8 @@ function AppController($scope, $router, user, auth, $location) {
   $scope.getUser = function(){
       return user.currentUser();
   }
+  
+  $scope.init();
 
     
 };
