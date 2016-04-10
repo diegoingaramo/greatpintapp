@@ -77,6 +77,19 @@ var userService = function($http, auth, $window) {
       });
   };
     
+    
+  self.tSignup = function(username, id) {
+  return $http.post('users/tSignup', {
+      username: username,
+      id: id
+    }).then(function(result) {
+          if (result.data.success){
+             $window.localStorage.setItem('user',JSON.stringify(result.data.user));
+          }
+          return result;
+      });
+  };
+    
   self.login = function(username, password) {
       return $http.post('users/login', {
           username: username,
@@ -94,8 +107,18 @@ var userService = function($http, auth, $window) {
         if (!auth.isAuthed()){
           OAuth.popup('twitter').done(function(result) {
             result.me().done(function(data) {
-                $window.localStorage.setItem('user',JSON.stringify({alias: data.alias}));
-                resolve();
+                self.tSignup(data.alias,data.id).then(function(result) {
+                   if (result.data.success){
+                       resolve();
+                   }
+                    else{
+                        //console.error('error: ', error);
+                        reject();
+                    }
+               }, function(reason) {
+                 console.error('error: ', reason);
+                 reject();
+               });
             });
           }).fail(function (error) {
                 console.error('error: ', error);

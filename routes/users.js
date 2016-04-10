@@ -9,8 +9,6 @@ var router = express.Router();
 
 router.post('/signup', function(req, res) {
     
-    console.log(req.body);
-    
     if (!req.body.password)
         res.send({ success: false, message: 'You must enter a password.' });
     else if (req.body.password != req.body.rpassword)
@@ -44,6 +42,52 @@ router.post('/signup', function(req, res) {
             }
         });
         
+    }
+});
+
+
+router.post('/tSignup', function(req, res) {
+    
+    if (!req.body.id)
+        res.send({ success: false, message: 'Bad Authentication.' });
+    else if (!req.body.username)
+        res.send({ success: false, message: 'Bad Authentication.' });
+    else{
+        
+        // find the user
+        User.findOne({username: req.body.username, tId: req.body.id, provider: 'twitter' }, function(err, user) {
+            
+            if (err) throw err;
+            
+            if (!user) {
+
+                var user = new User({
+                    username: req.body.username,
+                    tId: req.body.id,
+                    provider: 'twitter'
+                });
+
+                user.save(function(err,user){
+                    user.password = '';
+                    return res
+                        .status(200)
+                        .send({success: true, token: token_service.createToken(user), user: user});
+                });
+
+            }else {
+                // if user is found and password is right
+                // create a token
+                var token = token_service.createToken(user);
+          
+                // return the information including token as JSON
+                res.json({
+                  success: true,
+                  message: 'Enjoy your token!',
+                  token: token,
+                  user: user
+                });
+            }
+        });
     }
 });
 

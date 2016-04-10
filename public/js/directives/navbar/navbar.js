@@ -27,17 +27,18 @@ app.directive('customnavbar', function() {
                }, function(reason) {
                  bootbox.alert("Error: " + reason);
             });
+            $scope.user = {};
         };
         
         
         $scope.tLogin = function() {
-            user.tLogin().then(function(result) {
-               if (result.data.success){
+            $scope.twitterALert = false;
+            $scope.errorMessage = "";
+            user.tLogin().then(function() {
                    $location.path('/');
-               }
             }, function(reason) {
-                 bootbox.alert("Error: " + reason);
-            });
+                bootbox.alert("There was a problem with the twitter authentication. Please try again");
+            })
         };
         
         $scope.signup = function() {
@@ -54,6 +55,7 @@ app.directive('customnavbar', function() {
            }, function(reason) {
                 bootbox.alert("Error: " + reason);
            });
+           $scope.user = {};
         };
         
         
