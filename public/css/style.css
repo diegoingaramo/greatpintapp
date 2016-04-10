@@ -1,5 +1,5 @@
-body {
-  font: 1.5em "Lucida Grande", Helvetica, Arial, sans-serif;
+body .btn {
+  font: 1.0em "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 html, body {
@@ -85,7 +85,7 @@ html, body {
     padding: 15px;
 }
 
-#login-dropdown-list .btn {
+#login-dropdown-list .btn, #recent-section .btn {
     margin-top: 5px;
     background-color: #81D0D8;
     color: #fff;
@@ -139,6 +139,17 @@ h3 {
     color: #81D0D8;
     font-family: cursive;
 }
+
+#recent-section .btn {
+    font-weight: bold;
+    font-size: 1em;
+    padding: 6px 50px;
+}
+
+#recent-section label {
+    color: #777
+}
+
 /* End Recent Section */
 
 /* Footer section */

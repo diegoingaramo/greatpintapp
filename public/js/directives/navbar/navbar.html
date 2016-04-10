@@ -9,8 +9,8 @@
                 <li><a ng-link="recent">Recent</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="isAuthed()">
-                <li><a ng-link="recent"> My Pins </a></li>
-                <li><a ng-link="recent"> Add </a></li>
+                <li><a ng-link="mypins"> My Pins </a></li>
+                <li><a ng-link="addpin"> Add </a></li>
                 <li><a href="#" ng-click="logout()"> {{getUser().username}} Logout <span class="glyphicon glyphicon-log-in" title="logout"></span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="!isAuthed()">

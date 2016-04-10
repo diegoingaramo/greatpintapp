@@ -1,0 +1,21 @@
+<!-- login page -->
+<section id="recent-section" class="max-height" ng-controller="AddPinController">
+    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+    <h3 class="text-center">Add New Pin</h3>    
+    </div>        
+    </div>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group">   
+                          <label for="title">Title</label>
+                          <input type="text" class="form-control" aria-describedby="sizing-addon2" ng-model="pinImage.title">
+                        </div>
+                        <div class="form-group">   
+                          <label for="url">Pin URL</label>
+                          <input type="text" class="form-control" aria-describedby="sizing-addon2" ng-model="pinImage.url">
+                        </div>
+                        <button type="button" class="btn btn-info btn-sm" ng-click="addPin()">Submit</button>
+    </div>         
+    </div>
+</section>

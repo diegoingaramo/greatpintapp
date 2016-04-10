@@ -144,10 +144,42 @@ var userService = function($http, auth, $window) {
 /* End authentication services */
 
 
+/* Image service */
+
+var imageService = function($http) {
+    
+  var self = this;
+        
+  self.search = function(user) {
+      return $http.post('book/mybooks', {
+              email: user.email,
+          }).then(function(result) {
+              return result;
+          });
+  };
+    
+  self.save = function(user,image) {
+      return $http.post('image/save', {
+              user: user,
+              image: image
+          }).then(function(result) {
+              return result;
+       });
+  };
+    
+
+};
+
+
+/* End image service */
+
+
 /* Main controller definition */
 
 AppController.$routeConfig = [
     { path: '/recent', component: 'recent', as:'recent' },
+    { path: '/addpin', component: 'add_pin', as:'addpin' },
+    { path: '/mypins', component: 'my_pins', as:'mypins' },
 ];
 
 function AppController($scope, $router, user, auth, $location) {
@@ -171,11 +203,12 @@ function AppController($scope, $router, user, auth, $location) {
 
 /* End main controller definition */
 
-var app = angular.module('appMain', ['ngNewRouter','recent']).controller('AppController', ['$scope', '$router', 'user', 'auth', '$location', AppController]);
+var app = angular.module('appMain', ['ngNewRouter','recent','add.pin','my.pins']).controller('AppController', ['$scope', '$router', 'user', 'auth', '$location', AppController]);
 
 app.factory('authInterceptor', authInterceptor)
 .service('user', userService)
 .service('auth', authService)
+.service('imageService',imageService)
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
