@@ -18,7 +18,7 @@ app.directive('customnavbar', function() {
             $scope.errorMessage = "";
             user.login($scope.user.username, $scope.user.password).then(function(result) {
                if (result.data.success){
-                   $location.path('/');
+                   $location.path('/').search({});
                }
                 else{
                     $scope.notFoundUser = true;
@@ -35,7 +35,7 @@ app.directive('customnavbar', function() {
             $scope.twitterALert = false;
             $scope.errorMessage = "";
             user.tLogin().then(function() {
-                   $location.path('/');
+                   $location.path('/').search({});
             }, function(reason) {
                 bootbox.alert("There was a problem with the twitter authentication. Please try again");
             })
@@ -46,7 +46,7 @@ app.directive('customnavbar', function() {
            $scope.errorMessage = "";
            user.signup($scope.user.newUsername, $scope.user.newPassword, $scope.user.newRPassword).then(function(result) {
                 if (result.data.success){
-                    $location.path('/');
+                    $location.path('/').search({});
                 }
                 else{
                      $scope.userAlreadyExist = true;
@@ -61,7 +61,7 @@ app.directive('customnavbar', function() {
         
         $scope.logout = function() {
             auth.logout && auth.logout();
-            $location.path('/');
+            $location.path('/').search({});
         };
 
     

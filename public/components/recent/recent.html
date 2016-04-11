@@ -5,5 +5,19 @@
     <h3 class="text-center">Recent Pins</h3>    
     </div>        
     </div>
-              
+     <div class="row">
+        <div class="col-sm-12 vcenter">
+            <div masonry>
+                <div class="masonry-brick vcenter" ng-repeat="brick in bricks">
+                    <div class="card">
+                        <img ng-src="{{ brick.url }}" alt="A masonry brick">
+                        <div class="card-text text-center">
+                            <div class="card-title">{{ brick.title }}</div>
+                            <a ng-click="profile_pins(brick.owner._id)">{{brick.owner.username}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>           
 </section>

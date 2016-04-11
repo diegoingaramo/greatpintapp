@@ -152,6 +152,40 @@ h3 {
 
 /* End Recent Section */
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.card {
+    margin-bottom: 15px;
+    padding-bottom: 7px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-text a {
+    cursor: pointer;
+}
+
+.card-title {
+    margin: 5px;
+    font-family: cursive;
+    font-style: oblique;
+    
+}
+
+.masonry-brick { 
+    width: 15%; 
+    margin: 0.5em;
+}
+
+.masonry-brick img { 
+    width:100%; 
+}
+
 /* Footer section */
 footer {
     padding: 1px 0;

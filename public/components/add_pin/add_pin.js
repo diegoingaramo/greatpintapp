@@ -7,7 +7,7 @@ angular.module('add.pin', ['ngNewRouter'])
     $scope.addPin = function(){
        imageService.save(user.currentUser(), $scope.pinImage).then(function(result) {
            if (result.data.success){
-               $location.path('mypins');
+               $location.path('mypins').search({});
            }
             else
                 bootbox.alert(result.data.message);

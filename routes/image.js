@@ -36,6 +36,51 @@ router.post('/save', token_service.isAuthenticated, function(req, res) {
         };
 });
 
+router.post('/searchByUser', function(req, res) {
+    
+    Image.find({owner: new ObjectId(req.body.user._id)}).sort({dateAdded: -1}).exec(function(err, images) {
+            
+           if (err) throw err;
+        
+            return res
+                .status(200)
+                .send({success: true, images: images});
+        
+    });
+    
+
+});
+
+
+router.post('/delete', token_service.isAuthenticated, function(req, res) {
+    
+    Image.findOne({_id: req.body.image._id}).remove(function(err) {
+            
+       if (err) throw err;
+        
+           return res
+                    .status(200)
+                    .send({success: true});
+    });
+        
+});
+
+
+router.post('/recent', function(req, res) {
+    
+    Image.find({}).sort({dateAdded: -1}).populate('owner').exec(function(err,images){
+            
+           if (err) throw err;
+        
+            return res
+                .status(200)
+                .send({success: true, images: images});
+        
+    });
+    
+});
+
+
 
 // route to return all images (GET http://localhost:8080/users/list)
 router.get('/list', function(req, res) {

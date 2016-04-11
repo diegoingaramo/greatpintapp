@@ -134,6 +134,20 @@ router.post('/login', function(req, res) {
   });
 });
 
+
+// route to return all users (GET http://localhost:8080/users/list)
+router.post('/search', function(req, res) {
+  User.findOne({_id:req.body.user._id}, function(err, user) {
+       if (err) throw err;
+       user.password = '';
+       // return the information including token as JSON
+       res.json({
+          success: true,
+          user: user
+       });
+  });
+}); 
+
 // route to return all users (GET http://localhost:8080/users/list)
 router.get('/list', function(req, res) {
   User.find({}, function(err, users) {

@@ -131,6 +131,15 @@ var userService = function($http, auth, $window) {
   };
     
     
+  self.search = function(user) {
+      return $http.post('users/search', {
+              user: user
+          }).then(function(result) {
+              return result;
+          });
+  };
+    
+    
   self.currentUser = function() {
     if ($window.localStorage.getItem('user'))
       return JSON.parse($window.localStorage.getItem('user'));
@@ -150,9 +159,9 @@ var imageService = function($http) {
     
   var self = this;
         
-  self.search = function(user) {
-      return $http.post('book/mybooks', {
-              email: user.email,
+  self.searchByUser = function(user) {
+      return $http.post('image/searchByUser', {
+              user: user
           }).then(function(result) {
               return result;
           });
@@ -167,6 +176,20 @@ var imageService = function($http) {
        });
   };
     
+  
+  self.delete = function(image) {
+      return $http.post('image/delete', {
+              image: image
+          }).then(function(result) {
+              return result;
+          });
+  };    
+    
+  self.recent = function() {
+      return $http.post('image/recent').then(function(result) {
+              return result;
+      });
+  };  
 
 };
 
@@ -177,9 +200,11 @@ var imageService = function($http) {
 /* Main controller definition */
 
 AppController.$routeConfig = [
+    { path: '/', component: 'recent', as:'/' },
     { path: '/recent', component: 'recent', as:'recent' },
     { path: '/addpin', component: 'add_pin', as:'addpin' },
     { path: '/mypins', component: 'my_pins', as:'mypins' },
+    { path: '/profile_pins', component: 'profile_pins' },
 ];
 
 function AppController($scope, $router, user, auth, $location) {
@@ -203,7 +228,7 @@ function AppController($scope, $router, user, auth, $location) {
 
 /* End main controller definition */
 
-var app = angular.module('appMain', ['ngNewRouter','recent','add.pin','my.pins']).controller('AppController', ['$scope', '$router', 'user', 'auth', '$location', AppController]);
+var app = angular.module('appMain', ['ngNewRouter','wu.masonry','recent','add.pin','my.pins','profile.pins']).controller('AppController', ['$scope', '$router', 'user', 'auth', '$location', AppController]);
 
 app.factory('authInterceptor', authInterceptor)
 .service('user', userService)
