@@ -10,7 +10,7 @@
             <div masonry>
                 <div class="masonry-brick vcenter" ng-repeat="brick in bricks">
                     <div class="card">
-                        <img ng-src="{{ brick.url }}" alt="A masonry brick">
+                        <img ng-src="{{ brick.url }}" onerror="imgError(this);">
                         <div class="card-text text-center">
                             <div class="card-title">{{ brick.title }}</div>
                                 <a ng-click="deleteImage(brick, $index)">Delete</a>

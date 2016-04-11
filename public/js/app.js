@@ -237,3 +237,12 @@ app.factory('authInterceptor', authInterceptor)
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 });
+
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "/img/missing_image.png";
+    image.alt = "Image Not Found";
+    image.title = "Image Not Found";
+    return true;
+}
